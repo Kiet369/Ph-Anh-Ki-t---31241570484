@@ -22,7 +22,6 @@ input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 input_shape = input_details[0]['shape']
 
-# Class names & prices
 class_names = [
     "Ca hu kho", "Canh cai", "Canh chua", "Com trang", "Dau hu sot ca",
     "Ga chien", "Rau muong xao", "Thit kho", "Thit kho trung", "Trung chien"
@@ -77,7 +76,6 @@ def classify_image(image):
         cropped_images.append(crop)
         total_price += food_prices.get(predicted_label, 0)
 
-        # Draw label
         cv2.rectangle(original_img, (x1, y1), (x2, y2), (60, 180, 75), 2)
         cv2.putText(original_img, f"{predicted_label}", (x1, y1 - 10),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.65, (60, 180, 75), 2)
@@ -89,7 +87,6 @@ def classify_image(image):
     result_text = "\n".join([f"{food}: {food_prices[food]:,}đ" for food in unique_foods])
     return result_text, f"{total_price:,}đ", original_img, cropped_images
 
-# Custom CSS cho background đẹp & hiệu ứng
 custom_css = """
 body {
     font-family: 'Segoe UI', sans-serif;
