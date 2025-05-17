@@ -2,9 +2,6 @@
 
 !pip install -q ultralytics #cài đặt thư viện ultralytics
 
-from google.colab import drive
-drive.mount('/content/drive')
-
 import gradio as gr
 import cv2
 import numpy as np
@@ -13,10 +10,10 @@ from ultralytics import YOLO
 from PIL import Image
 
 # Load YOLO model
-yolo_model = YOLO("yolov8n.pt")
+yolo_model = YOLO("/content/drive/MyDrive/yolov8n.pt")
 
 # Load TFLite model
-interpreter = tf.lite.Interpreter(model_path="/content/drive/MyDrive/cnn_food.tflite")
+interpreter = tf.lite.Interpreter(model_path="/content/drive/MyDrive/food_model.tflite")
 interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
@@ -134,7 +131,7 @@ with gr.Blocks(css=custom_css, theme=gr.themes.Soft()) as demo:
 
     with gr.Tab("Kết quả nhận diện"):
         food_output = gr.Textbox(label="Danh sách món & giá", lines=10, interactive=False)
-        total_output = gr.Textbox(label="Tổng chi phí", interactive=False)
+        total_output = gr.Textbox(label="Tổng chi phí thanh toán", interactive=False)
 
     with gr.Tab("Các món đã cắt"):
         cropped_output = gr.Gallery(label="Ảnh các món ăn", columns=3, height=230)
