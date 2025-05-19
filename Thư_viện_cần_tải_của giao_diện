@@ -1,3 +1,7 @@
 Thư viện cần tải: !pip install -q gradio #Cài đặt thư viện Gradio
 
 Thư viện cần tải: !pip install -q ultralytics #cài đặt thư viện ultralytics
+
+!pip install qrcode[pil] fpdf
+
+!pip install -q ultralytics gradio tensorflow opencv-python pillow qrcode[pil] fpdf pandas
